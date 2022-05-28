@@ -5,8 +5,8 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component"
-import "./sign-up-form.style.scss"
+import Button from "../button/button.component";
+import "./sign-up-form.style.scss";
 
 const defaultFormFields = {
   displayName: "",
@@ -55,7 +55,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div>
+    <div className="sign-up-container">
       <h1>Sign up with your mail and password</h1>
       <form onSubmit={(evt) => handleSubmit(evt)}>
         <FormInput

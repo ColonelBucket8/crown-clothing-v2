@@ -1,4 +1,4 @@
-import "./category-item.style.scss"
+import "./category-item.style.scss";
 
 const CategoryItem = ({ category }) => {
   return (
