@@ -6,7 +6,6 @@ import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
-import "./sign-in-form.style.scss";
 
 const defaultFormFields = {
   email: "",
@@ -18,8 +17,7 @@ const SignInForm = () => {
   const { email, password } = formFields;
 
   const logGoogleUser = async () => {
-    const response = await signInWithGooglePopup();
-    const userDocRef = await createUserDocumentFromAuth(response.user);
+   await signInWithGooglePopup();
   };
 
   const handleSubmit = async (evt) => {
