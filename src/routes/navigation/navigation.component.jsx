@@ -8,7 +8,6 @@ import "./navigation.style.scss";
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
 
-
   return (
     <Fragment>
       <div className="navigation">
