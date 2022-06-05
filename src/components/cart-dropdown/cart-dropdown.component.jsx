@@ -1,11 +1,13 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../contexts/cart.context";
 import Button from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
 import "./cart-dropdown.style.scss";
 
 const CartDropdown = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, setShowCart } = useContext(CartContext);
+  const handleClick = () => setShowCart(false);
   return (
     <div className="cart-dropdown-container">
       {cartItems.length === 0 && (
@@ -16,7 +18,9 @@ const CartDropdown = () => {
           <CartItem key={cartItem.id} cartItem={cartItem} />
         ))}
       </div>
-      <Button>CHECKOUT</Button>
+      <Link to="/checkout">
+        <Button onClick={handleClick}>CHECKOUT</Button>
+      </Link>
     </div>
   );
 };
