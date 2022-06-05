@@ -9,7 +9,7 @@ const CartItem = ({ cartItem }) => {
       <div className="item-details">
         <h2 className="name">{name}</h2>
         <span>
-          {quantity} X {price}
+          {quantity} X ${price}
         </span>
       </div>
     </div>

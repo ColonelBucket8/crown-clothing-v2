@@ -11,7 +11,6 @@ const addCartItem = (cartItems, productToAdd) => {
         ? {
             ...cartItem,
             quantity: cartItem.quantity + 1,
-            price: cartItem.price + productToAdd.price,
           }
         : cartItem
     );
