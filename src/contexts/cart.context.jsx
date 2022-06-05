@@ -41,7 +41,6 @@ const removeCartItem = (cartItems, productToRemove) => {
 
   cartItems.splice(indexOfExistingCartItem, 1);
 
-  console.log("CART ITEMS", cartItems);
   return [cartItems];
 };
 
@@ -52,12 +51,14 @@ export const CartContext = createContext({
   addItemToCart: () => {},
   removeItemFromCart: () => {},
   cartCount: 0,
+  cartTotal: 0,
 });
 
 export const CartProvider = ({ children }) => {
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
     const newCartCount = cartItems.reduce(
@@ -68,6 +69,15 @@ export const CartProvider = ({ children }) => {
     setCartCount(newCartCount);
   }, [cartItems]);
 
+  useEffect(() => {
+    const newCartTotal = cartItems.reduce(
+      (total, cartItem) => total + cartItem.price,
+      0
+    );
+
+    setCartTotal(newCartTotal);
+  }, [cartItems]);
+
   const addItemToCart = (productToAdd) => {
     setCartItems(addCartItem(cartItems, productToAdd));
   };
@@ -75,6 +85,7 @@ export const CartProvider = ({ children }) => {
   const removeItemFromCart = (productToRemove) => {
     setCartItems(removeCartItem(cartItems, productToRemove));
   };
+
   const value = {
     showCart,
     setShowCart,
@@ -82,6 +93,7 @@ export const CartProvider = ({ children }) => {
     removeItemFromCart,
     cartItems,
     cartCount,
+    cartTotal,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
