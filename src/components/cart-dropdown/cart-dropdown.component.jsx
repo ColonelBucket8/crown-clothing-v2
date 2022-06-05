@@ -8,7 +8,9 @@ const CartDropdown = () => {
   const { cartItems } = useContext(CartContext);
   return (
     <div className="cart-dropdown-container">
-      <span className="empty-message">Your cart is empty</span>
+      {cartItems.length === 0 && (
+        <span className="empty-message">Your cart is empty</span>
+      )}
       <div className="cart-items">
         {cartItems.map((cartItem) => (
           <CartItem key={cartItem.id} cartItem={cartItem} />
