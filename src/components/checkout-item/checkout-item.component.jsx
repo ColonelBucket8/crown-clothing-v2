@@ -1,14 +1,25 @@
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cart.context";
 import "./checkout-item.style.scss";
 
 const CheckoutItem = ({ cartItem }) => {
   const { name, price, quantity, imageUrl } = cartItem;
+  const { addItemToCart } = useContext(CartContext);
+
+  const handleRightArrowClick = () => addItemToCart(cartItem);
   return (
     <div className="checkout-item-container">
       <div className="image-container">
         <img src={imageUrl} alt={name} />
       </div>
       <span className="name">{name}</span>
-      <span className="quantity">{quantity}</span>
+      <div className="quantity">
+        <span className="arrow">&#8592;</span>
+        <span>{quantity}</span>
+        <span className="arrow" onClick={handleRightArrowClick}>
+          &#8594;
+        </span>
+      </div>
       <span className="price">{price}</span>
     </div>
   );
