@@ -17,7 +17,7 @@ const SignInForm = () => {
   const { email, password } = formFields;
 
   const logGoogleUser = async () => {
-   await signInWithGooglePopup();
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (evt) => {
@@ -63,7 +63,6 @@ const SignInForm = () => {
           name="email"
           value={email}
         />
-
         <FormInput
           label="Password"
           type="password"
