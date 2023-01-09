@@ -1,4 +1,4 @@
-import "./form-input.style.scss";
+import './form-input.style.scss';
 
 const FormInput = ({ label, ...otherProps }) => {
   return (
@@ -7,7 +7,7 @@ const FormInput = ({ label, ...otherProps }) => {
       {label && (
         <label
           className={`${
-            otherProps.value && otherProps.value.length ? "shrink" : ""
+            otherProps.value && otherProps.value.length ? 'shrink' : ''
           } form-input-label`}
         >
           {label}

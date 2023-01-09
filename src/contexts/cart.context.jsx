@@ -1,4 +1,22 @@
-import { useEffect, useState, createContext, useRef } from "react";
+import { useEffect, useState, createContext } from 'react';
+
+const cartItemsToReturn = (productToAdd, cartItem) => {
+  return cartItem.id === productToAdd.id
+    ? {
+        ...cartItem,
+        quantity: cartItem.quantity + 1,
+      }
+    : cartItem;
+};
+
+const cartItemsToRemove = (cartItem, productToRemove) => {
+  return cartItem.id === productToRemove.id
+    ? {
+        ...cartItem,
+        quantity: cartItem.quantity - 1,
+      }
+    : cartItem;
+};
 
 const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
@@ -7,12 +25,7 @@ const addCartItem = (cartItems, productToAdd) => {
 
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
-      cartItem.id === productToAdd.id
-        ? {
-            ...cartItem,
-            quantity: cartItem.quantity + 1,
-          }
-        : cartItem
+      cartItemsToReturn(productToAdd, cartItem)
     );
   }
 
@@ -29,12 +42,7 @@ const removeCartItem = (cartItems, productToRemove) => {
   }
 
   return cartItems.map((cartItem) =>
-    cartItem.id === productToRemove.id
-      ? {
-          ...cartItem,
-          quantity: cartItem.quantity - 1,
-        }
-      : cartItem
+    cartItemsToRemove(cartItem, productToRemove)
   );
 };
 
