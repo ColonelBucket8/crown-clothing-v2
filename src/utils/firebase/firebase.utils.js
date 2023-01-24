@@ -29,8 +29,7 @@ const firebaseConfig = {
   appId: '1:1012527673483:web:4db6b17ff1d3809cc5248e',
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
-
+initializeApp(firebaseConfig);
 const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({
@@ -95,7 +94,7 @@ export const createUserDocumentFromAuth = async (
     }
   }
 
-  return userDocRef;
+  return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -114,3 +113,16 @@ export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubsribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubsribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });
+};
