@@ -1,43 +1,38 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import {
-  createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth,
-} from "../../utils/firebase/firebase.utils";
-import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
-import "./sign-up-form.style.scss";
+import FormInput from '../form-input/form-input.component';
+import Button from '../button/button.component';
+import './sign-up-form.style.scss';
+import { useDispatch } from 'react-redux';
+import { signUpStart } from '../../store/user/user.action';
 
 const defaultFormFields = {
-  displayName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
+  displayName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
 };
 
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
+  const dispatch = useDispatch();
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("passwords to not match");
+      alert('passwords to not match');
       return;
     }
 
     try {
-      const response = await createAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      await createUserDocumentFromAuth(response.user, { displayName });
+      dispatch(signUpStart(email, password, displayName));
       resetFormFields();
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user, email already in use");
+      if (error.code === 'auth/email-already-in-use') {
+        alert('Cannot create user, email already in use');
       } else {
         throw error;
       }
