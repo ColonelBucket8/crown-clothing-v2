@@ -5,8 +5,14 @@ import {
   DirectoryItemContainer,
 } from './directory-item.style';
 import { useNavigate } from 'react-router-dom';
+import { FC } from 'react';
+import { CategoriesType } from '../../routes/home/home.component';
 
-const DirectoryItem = ({ category }) => {
+type DirectoryItemProps = {
+  category: CategoriesType;
+};
+
+const DirectoryItem: FC<DirectoryItemProps> = ({ category }) => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`shop/${category.title}`);
