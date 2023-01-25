@@ -9,12 +9,19 @@ import {
   selectCategoriesMap,
 } from '../../store/categories/categories.selector';
 import Spinner from '../../components/spinner/spinner.component';
+import { CategoryItem } from '../../store/categories/categories.types';
+
+type CategoryRouteParams = {
+  category: string;
+};
 
 const Category = () => {
-  const { category } = useParams();
+  const { category } = useParams<
+    keyof CategoryRouteParams
+  >() as CategoryRouteParams;
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
-  const [products, setProduct] = useState([]);
+  const [products, setProduct] = useState<CategoryItem[]>([]);
 
   const isCategoriesMapExist = !!Object.keys(categoriesMap).length;
 
