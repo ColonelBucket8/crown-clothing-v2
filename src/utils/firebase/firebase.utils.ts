@@ -67,10 +67,8 @@ export const addCollectionAndDocuments = async <T extends ObjectToAdd>(
   await batch.commit();
 };
 
-export const getCategoriesAndDocuments = async (
-  path = 'categories'
-): Promise<Category[]> => {
-  const collectionRef = collection(db, path);
+export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
+  const collectionRef = collection(db, 'categories');
 
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q);
