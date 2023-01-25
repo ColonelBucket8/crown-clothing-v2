@@ -4,14 +4,17 @@ import {
   GoogleSignInButton,
   InvertedButton,
 } from './button.style';
+import { ButtonHTMLAttributes, FC } from 'react';
 
-export const BUTTON_TYPE_CLASSES = {
-  base: 'base',
-  google: 'google-sign-in',
-  inverted: 'inverted',
-};
+export enum BUTTON_TYPE_CLASSES {
+  base = 'base',
+  google = 'google-sign-in',
+  inverted = 'inverted',
+}
 
-const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) => {
+const getButton = (
+  buttonType = BUTTON_TYPE_CLASSES.base
+): typeof BaseButton => {
   switch (buttonType) {
     case BUTTON_TYPE_CLASSES.base:
       return BaseButton;
@@ -24,7 +27,17 @@ const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) => {
   }
 };
 
-const Button = ({ children, buttonType, isLoading, ...otherProps }) => {
+export type ButtonProps = {
+  buttonType?: BUTTON_TYPE_CLASSES;
+  isLoading?: boolean;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button: FC<ButtonProps> = ({
+  children,
+  buttonType,
+  isLoading,
+  ...otherProps
+}) => {
   const CustomButton = getButton(buttonType);
   return (
     <CustomButton disabled={isLoading} {...otherProps}>
