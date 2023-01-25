@@ -33,7 +33,7 @@ const cartItemsToRemove = (cartItem: CartItem, productToRemove: CartItem) => {
     : cartItem;
 };
 
-const addCartItem = (cartItems: CartItem[], productToAdd: CartItem) => {
+const addCartItem = (cartItems = [] as CartItem[], productToAdd: CartItem) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
@@ -61,8 +61,10 @@ const removeCartItem = (cartItems: CartItem[], productToRemove: CartItem) => {
   );
 };
 
-const clearCartItem = (cartItems: CartItem[], productToRemove: CartItem) =>
-  cartItems.filter((cartItem) => cartItem.id !== productToRemove.id);
+const clearCartItem = (
+  cartItems = [] as CartItem[],
+  productToRemove: CartItem
+) => cartItems.filter((cartItem) => cartItem.id !== productToRemove.id);
 
 export const setShowCart = withMatcher(
   (bool: boolean): SetShowCart =>
@@ -82,7 +84,7 @@ export const addItemToCart = withMatcher(
 );
 
 export const removeItemFromCart = withMatcher(
-  (cartItems: CartItem[], productToRemove: CartItem) => {
+  (cartItems = [] as CartItem[], productToRemove: CartItem) => {
     const newCartItems = removeCartItem(cartItems, productToRemove);
     return setCartItems(newCartItems);
   }

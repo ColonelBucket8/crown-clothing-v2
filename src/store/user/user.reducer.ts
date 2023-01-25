@@ -23,7 +23,7 @@ const INITIAL_STATE: Readonly<UserState> = {
 
 export const userReducer = (
   state = INITIAL_STATE,
-  action = {} as AnyAction
+  action: AnyAction
 ): UserState => {
   if (signInSuccess.match(action)) {
     return {
