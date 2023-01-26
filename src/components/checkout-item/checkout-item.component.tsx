@@ -8,12 +8,12 @@ import './checkout-item.style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { CartItem } from '../../store/cart/cart.types';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 type CheckoutItemProps = {
   cartItem: CartItem;
 };
-const CheckoutItem: FC<CheckoutItemProps> = ({ cartItem }) => {
+const CheckoutItem: FC<CheckoutItemProps> = memo(({ cartItem }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
@@ -52,6 +52,6 @@ const CheckoutItem: FC<CheckoutItemProps> = ({ cartItem }) => {
       </div>
     </div>
   );
-};
+});
 
 export default CheckoutItem;
