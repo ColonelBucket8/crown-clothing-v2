@@ -17,6 +17,8 @@ test('render cart item', () => {
   const totalPrice = `${cartItemTest.quantity} X $${cartItemTest.price}`;
 
   expect(screen.getByText(totalPrice)).toBeInTheDocument();
-  expect(screen.getByRole('img')).toBeInTheDocument();
+  expect(
+    screen.getByRole('img', { name: cartItemTest.name })
+  ).toBeInTheDocument();
   expect(screen.getByText(cartItemTest.name)).toBeInTheDocument();
 });
