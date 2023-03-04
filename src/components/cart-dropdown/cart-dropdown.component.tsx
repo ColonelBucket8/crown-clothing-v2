@@ -8,28 +8,26 @@ import {
   CartItems,
   EmptyMessage,
 } from './cart-dropdown.style';
+import { FC, useCallback } from 'react';
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { setShowCart } from '../../store/cart/cart.action';
-import { useCallback } from 'react';
 
-const CartDropdown = () => {
+const CartDropdown: FC = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
   const navigate = useNavigate();
 
   const goToCheckoutHandler = useCallback(() => {
-    navigate('/checkout');
+    navigate('/checkout', {});
     dispatch(setShowCart(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const doCartItemsExist = cartItems.length !== 0;
-
   return (
     <CartDropdownContainer>
       <CartItems>
-        {doCartItemsExist ? (
+        {cartItems.length !== 0 ? (
           cartItems.map((cartItem) => (
             <CartItem key={cartItem.id} cartItem={cartItem} />
           ))
