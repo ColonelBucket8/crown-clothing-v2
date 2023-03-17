@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import Button, { BUTTON_TYPE_CLASSES } from './button.component';
 
@@ -26,8 +27,27 @@ describe('Navigation component', () => {
     expect(buttonElement).toHaveStyle('color: white');
 
     // On hover
-    fireEvent.mouseEnter(buttonElement);
+    userEvent.hover(buttonElement);
     expect(buttonElement).toHaveStyle('border: none');
     // expect(buttonElement).toHaveStyle('background-color: #357ae8');
+  });
+
+  it('should render the inverted button component with children', async () => {
+    render(
+      <Button buttonType={BUTTON_TYPE_CLASSES.inverted}>Click Me!</Button>
+    );
+
+    const buttonElement = screen.getByText('Click Me!');
+    expect(buttonElement).toBeInTheDocument();
+    expect(buttonElement).toHaveStyle('cursor: pointer');
+    expect(buttonElement).toHaveStyle('background-color: white');
+    expect(buttonElement).toHaveStyle('color: black');
+
+    // On hover
+    // TODO: Doesn't work for hover
+    // userEvent.hover(buttonElement);
+    // expect(buttonElement).toHaveStyle('border: none');
+    // expect(buttonElement).toHaveStyle('background-color: black');
+    // expect(buttonElement).toHaveStyle('color: white');
   });
 });
