@@ -11,14 +11,16 @@ const cartItemTest = {
   price: 1000,
 };
 
-test('render cart item', () => {
-  render(<CartItem cartItem={cartItemTest} />);
+describe('Cart Item component', () => {
+  it('render cart item', () => {
+    render(<CartItem cartItem={cartItemTest} />);
 
-  const totalPrice = `${cartItemTest.quantity} X $${cartItemTest.price}`;
+    const totalPrice = `${cartItemTest.quantity} X $${cartItemTest.price}`;
 
-  expect(screen.getByText(totalPrice)).toBeInTheDocument();
-  expect(
-    screen.getByRole('img', { name: cartItemTest.name })
-  ).toBeInTheDocument();
-  expect(screen.getByText(cartItemTest.name)).toBeInTheDocument();
+    expect(screen.getByText(totalPrice)).toBeInTheDocument();
+    expect(
+      screen.getByRole('img', { name: cartItemTest.name })
+    ).toBeInTheDocument();
+    expect(screen.getByText(cartItemTest.name)).toBeInTheDocument();
+  });
 });
