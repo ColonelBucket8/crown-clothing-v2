@@ -32,7 +32,11 @@ export type Action<T> = {
   type: T;
 };
 
-// Function overloading
+/**
+ * Function overload that returns type and payload if payload is not void
+ * @param type
+ * @param payload
+ */
 export function createAction<T extends string, P>(
   type: T,
   payload: P

@@ -32,6 +32,14 @@ export type ButtonProps = {
   isLoading?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
+/**
+ * Three types of buttons: base, google, inverted
+ * @param children
+ * @param buttonType
+ * @param isLoading
+ * @param otherProps
+ * @constructor
+ */
 const Button: FC<ButtonProps> = ({
   children,
   buttonType,

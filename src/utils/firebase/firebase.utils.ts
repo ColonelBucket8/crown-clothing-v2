@@ -87,6 +87,11 @@ export type UserData = {
   email: string;
 };
 
+/**
+ * Creates a user document in the database if it doesn't exist
+ * @param userAuth
+ * @param additionalInformation
+ */
 export const createUserDocumentFromAuth = async (
   userAuth: User,
   additionalInformation = {} as AdditionalInformation

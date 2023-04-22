@@ -13,6 +13,12 @@ type CategoryPreviewProps = {
   products: CategoryItem[];
 };
 
+/**
+ * Category preview component
+ * @param title
+ * @param products
+ * @constructor
+ */
 const CategoryPreview: FC<CategoryPreviewProps> = ({ title, products }) => {
   return (
     <CategoryPreviewContainer>

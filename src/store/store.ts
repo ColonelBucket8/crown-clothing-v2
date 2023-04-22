@@ -28,12 +28,14 @@ const sagaMiddleware = createSagaMiddleware();
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+// Only log actions in development
 const isLogger = process.env.NODE_ENV === 'development' && logger;
 
 const middleWares = [isLogger, sagaMiddleware].filter(
   (middleware): middleware is Middleware => Boolean(middleware)
 );
 
+// Enable Redux DevTools Extension in development
 const composeEnhancer =
   (process.env.NODE_ENV !== 'production' &&
     window &&

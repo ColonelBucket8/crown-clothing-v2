@@ -18,6 +18,10 @@ const isValidCardElement = (
   card: StripeCardElement | null
 ): card is StripeCardElement => card !== null;
 
+/**
+ * Stripe button payment component
+ * @constructor
+ */
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();

@@ -21,6 +21,9 @@ const Navigation = () => {
 
   const dispatch = useDispatch();
 
+  /**
+   * Header navbar contains the logo, shop link, sign in link and cart icon
+   */
   const signOutUser = () => {
     dispatch(signOutStart());
   };
