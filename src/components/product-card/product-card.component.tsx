@@ -1,10 +1,10 @@
-import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
-import './product-card.style.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { addItemToCart } from '../../store/cart/cart.action';
-import { selectCartItems } from '../../store/cart/cart.selector';
-import { FC } from 'react';
-import { CategoryItem } from '../../store/categories/categories.types';
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
+import "./product-card.style.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart } from "../../store/cart/cart.action";
+import { selectCartItems } from "../../store/cart/cart.selector";
+import { FC } from "react";
+import { CategoryItem } from "../../store/categories/categories.types";
 
 type ProductCardProps = {
   product: CategoryItem;

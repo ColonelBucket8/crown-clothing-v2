@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import {
   getAuth,
   signInWithRedirect,
@@ -10,7 +10,7 @@ import {
   onAuthStateChanged,
   User,
   NextOrObserver,
-} from 'firebase/auth';
+} from "firebase/auth";
 import {
   getFirestore,
   doc,
@@ -21,23 +21,23 @@ import {
   query,
   getDocs,
   QueryDocumentSnapshot,
-} from 'firebase/firestore';
-import { Category } from '../../store/categories/categories.types';
+} from "firebase/firestore";
+import { Category } from "../../store/categories/categories.types";
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBVpYb8h6pVNCaxXUt5MW8Uf6apDbT3vJA',
-  authDomain: 'crown-v2-db.firebaseapp.com',
-  projectId: 'crown-v2-db',
-  storageBucket: 'crown-v2-db.appspot.com',
-  messagingSenderId: '1012527673483',
-  appId: '1:1012527673483:web:4db6b17ff1d3809cc5248e',
+  apiKey: "AIzaSyBVpYb8h6pVNCaxXUt5MW8Uf6apDbT3vJA",
+  authDomain: "crown-v2-db.firebaseapp.com",
+  projectId: "crown-v2-db",
+  storageBucket: "crown-v2-db.appspot.com",
+  messagingSenderId: "1012527673483",
+  appId: "1:1012527673483:web:4db6b17ff1d3809cc5248e",
 };
 
 initializeApp(firebaseConfig);
 const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({
-  prompt: 'select_account',
+  prompt: "select_account",
 });
 
 export const auth = getAuth();
@@ -68,7 +68,7 @@ export const addCollectionAndDocuments = async <T extends ObjectToAdd>(
 };
 
 export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
-  const collectionRef = collection(db, 'categories');
+  const collectionRef = collection(db, "categories");
 
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q);
@@ -98,7 +98,7 @@ export const createUserDocumentFromAuth = async (
 ): Promise<QueryDocumentSnapshot<UserData> | void> => {
   if (!userAuth) return;
 
-  const userDocRef = doc(db, 'users', userAuth.uid);
+  const userDocRef = doc(db, "users", userAuth.uid);
 
   const userSnapshot = await getDoc(userDocRef);
 
@@ -114,7 +114,7 @@ export const createUserDocumentFromAuth = async (
         ...additionalInformation,
       });
     } catch (error) {
-      console.log('Error creating the user', error);
+      console.log("Error creating the user", error);
       throw error;
     }
   }

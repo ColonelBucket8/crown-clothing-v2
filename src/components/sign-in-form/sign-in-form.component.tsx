@@ -1,16 +1,16 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import FormInput from '../form-input/form-input.component';
-import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useDispatch } from "react-redux";
+import FormInput from "../form-input/form-input.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import {
   googleSignInStart,
   emailSignInStart,
-} from '../../store/user/user.action';
-import { AuthError, AuthErrorCodes } from 'firebase/auth';
+} from "../../store/user/user.action";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 
 const defaultFormFields = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
 };
 
 const SignInForm = () => {
@@ -31,10 +31,10 @@ const SignInForm = () => {
     } catch (error) {
       switch ((error as AuthError).code) {
         case AuthErrorCodes.INVALID_PASSWORD:
-          alert('Incorrect password for email');
+          alert("Incorrect password for email");
           break;
         case AuthErrorCodes.USER_DELETED:
-          alert('No user associated with this email');
+          alert("No user associated with this email");
           break;
         default:
           console.log(error);

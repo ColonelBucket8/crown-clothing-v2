@@ -2,9 +2,9 @@ import {
   ActionWithPayload,
   createAction,
   withMatcher,
-} from '../../utils/reducer/reducer.utils';
-import { CART_ACTION_TYPES, CartItem } from './cart.types';
-import { CategoryItem } from '../categories/categories.types';
+} from "../../utils/reducer/reducer.utils";
+import { CART_ACTION_TYPES, CartItem } from "./cart.types";
+import { CategoryItem } from "../categories/categories.types";
 
 export type SetShowCart = ActionWithPayload<
   CART_ACTION_TYPES.SET_SHOW_CART,

@@ -1,13 +1,13 @@
-import { AnyAction } from 'redux';
+import { AnyAction } from "redux";
 
-import { UserData } from '../../utils/firebase/firebase.utils';
+import { UserData } from "../../utils/firebase/firebase.utils";
 import {
   signInFailed,
   signInSuccess,
   signOutFailed,
   signOutSuccess,
   signUpFailed,
-} from './user.action';
+} from "./user.action";
 
 export type UserState = {
   currentUser: UserData | null;

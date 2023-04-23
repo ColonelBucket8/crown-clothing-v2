@@ -3,13 +3,13 @@ import {
   ButtonSpinner,
   GoogleSignInButton,
   InvertedButton,
-} from './button.style';
-import { ButtonHTMLAttributes, FC } from 'react';
+} from "./button.style";
+import { ButtonHTMLAttributes, FC } from "react";
 
 export enum BUTTON_TYPE_CLASSES {
-  base = 'base',
-  google = 'google-sign-in',
-  inverted = 'inverted',
+  base = "base",
+  google = "google-sign-in",
+  inverted = "inverted",
 }
 
 const getButton = (

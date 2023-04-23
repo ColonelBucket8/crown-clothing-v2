@@ -1,6 +1,6 @@
-import { CartItem } from './cart.types';
-import { AnyAction } from 'redux';
-import { setCartItems, setShowCart } from './cart.action';
+import { CartItem } from "./cart.types";
+import { AnyAction } from "redux";
+import { setCartItems, setShowCart } from "./cart.action";
 
 export type CartState = {
   readonly showCart: boolean;

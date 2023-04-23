@@ -1,12 +1,12 @@
-import './directory-item.style';
+import "./directory-item.style";
 import {
   BackgroundImage,
   Body,
   DirectoryItemContainer,
-} from './directory-item.style';
-import { useNavigate } from 'react-router-dom';
-import { FC } from 'react';
-import { CategoriesType } from '../../routes/home/home.component';
+} from "./directory-item.style";
+import { useNavigate } from "react-router-dom";
+import { FC } from "react";
+import { CategoriesType } from "../../routes/home/home.component";
 
 type DirectoryItemProps = {
   category: CategoriesType;
