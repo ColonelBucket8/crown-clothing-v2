@@ -46,7 +46,15 @@ const PaymentForm = () => {
       body: JSON.stringify({ amount: amount * 100 }),
     }).then((response) => response.json());
 
-    const clientSecret = response.paymentIntent.client_secret;
+    let clientSecret = '';
+    if (
+      typeof response === 'object' &&
+      response &&
+      'paymentIntent' in response
+    ) {
+      clientSecret = (response.paymentIntent as { client_secret: string })
+        .client_secret;
+    }
 
     const cardDetails = elements.getElement(CardElement);
 
