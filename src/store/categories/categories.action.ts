@@ -3,8 +3,8 @@ import {
   Action,
   ActionWithPayload,
   withMatcher,
-} from '../../utils/reducer/reducer.utils';
-import { CATEGORIES_ACTION_TYPES, Category } from './categories.types';
+} from "../../utils/reducer/reducer.utils";
+import { CATEGORIES_ACTION_TYPES, Category } from "./categories.types";
 
 export type FetchCategoriesStart =
   Action<CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START>;

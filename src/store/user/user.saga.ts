@@ -1,6 +1,6 @@
-import { takeLatest, put, all, call } from 'typed-redux-saga/macro';
-import { User } from 'firebase/auth';
-import { USER_ACTION_TYPES } from './user.types';
+import { takeLatest, put, all, call } from "typed-redux-saga/macro";
+import { User } from "firebase/auth";
+import { USER_ACTION_TYPES } from "./user.types";
 import {
   signInSuccess,
   signInFailed,
@@ -10,7 +10,7 @@ import {
   EmailSignInStart,
   SignUpStart,
   SignUpSuccess,
-} from './user.action';
+} from "./user.action";
 import {
   getCurrentUser,
   createUserDocumentFromAuth,
@@ -19,7 +19,7 @@ import {
   createAuthUserWithEmailAndPassword,
   signOutUser,
   AdditionalInformation,
-} from '../../utils/firebase/firebase.utils';
+} from "../../utils/firebase/firebase.utils";
 
 export function* getSnapshotFromUserAuth(
   userAuth: User,

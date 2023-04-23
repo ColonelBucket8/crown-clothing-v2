@@ -1,6 +1,6 @@
-import './form-input.style';
-import { FormInputLabel, Group, Input } from './form-input.style';
-import { FC, InputHTMLAttributes } from 'react';
+import "./form-input.style";
+import { FormInputLabel, Group, Input } from "./form-input.style";
+import { FC, InputHTMLAttributes } from "react";
 
 type FormInputProps = {
   label: string;
@@ -9,7 +9,7 @@ type FormInputProps = {
 const FormInput: FC<FormInputProps> = ({ label, ...otherProps }) => {
   const doesShrink = Boolean(
     otherProps.value &&
-      typeof otherProps.value === 'string' &&
+      typeof otherProps.value === "string" &&
       otherProps.value.length
   );
 

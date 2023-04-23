@@ -1,7 +1,7 @@
-import { AnyAction } from 'redux';
+import { AnyAction } from "redux";
 
 type Matchable<AC extends () => AnyAction> = AC & {
-  type: ReturnType<AC>['type'];
+  type: ReturnType<AC>["type"];
   match(action: AnyAction): action is ReturnType<AC>;
 };
 
@@ -32,7 +32,11 @@ export type Action<T> = {
   type: T;
 };
 
-// Function overloading
+/**
+ * Function overload that returns type and payload if payload is not void
+ * @param type
+ * @param payload
+ */
 export function createAction<T extends string, P>(
   type: T,
   payload: P

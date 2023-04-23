@@ -1,5 +1,5 @@
-import Directory from '../../components/directory/directory.component';
-import categories from '../../categories.json';
+import Directory from "../../components/directory/directory.component";
+import categories from "../../categories.json";
 
 export type CategoriesType = {
   id: number;

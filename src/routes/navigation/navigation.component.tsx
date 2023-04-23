@@ -1,19 +1,19 @@
-import { Fragment } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
-import { ReactComponent as CrownLogo } from '../../assets/crown.svg';
-import CartIcon from '../../components/cart-icon/cart-icon.component';
-import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component';
+import { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
+import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
 import {
   NavigationContainer,
   NavLinks,
   NavLink,
   LogoContainer,
-} from './navigation.style';
-import { selectCurrentUser } from '../../store/user/user.selector';
-import { selectShowCart } from '../../store/cart/cart.selector';
-import { signOutStart } from '../../store/user/user.action';
+} from "./navigation.style";
+import { selectCurrentUser } from "../../store/user/user.selector";
+import { selectShowCart } from "../../store/cart/cart.selector";
+import { signOutStart } from "../../store/user/user.action";
 
 const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
@@ -21,6 +21,9 @@ const Navigation = () => {
 
   const dispatch = useDispatch();
 
+  /**
+   * Header navbar contains the logo, shop link, sign in link and cart icon
+   */
   const signOutUser = () => {
     dispatch(signOutStart());
   };

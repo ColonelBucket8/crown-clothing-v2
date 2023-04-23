@@ -1,17 +1,17 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { AuthError, AuthErrorCodes } from 'firebase/auth';
+import { ChangeEvent, FormEvent, useState } from "react";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 
-import FormInput from '../form-input/form-input.component';
-import Button from '../button/button.component';
-import './sign-up-form.style.scss';
-import { useDispatch } from 'react-redux';
-import { signUpStart } from '../../store/user/user.action';
+import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.component";
+import "./sign-up-form.style.scss";
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../../store/user/user.action";
 
 const defaultFormFields = {
-  displayName: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
+  displayName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
 };
 
 const SignUpForm = () => {
@@ -24,7 +24,7 @@ const SignUpForm = () => {
     evt.preventDefault();
 
     if (password !== confirmPassword) {
-      alert('passwords to not match');
+      alert("passwords to not match");
       return;
     }
 
@@ -33,7 +33,7 @@ const SignUpForm = () => {
       resetFormFields();
     } catch (error) {
       if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
-        alert('Cannot create user, email already in use');
+        alert("Cannot create user, email already in use");
       } else {
         throw error;
       }

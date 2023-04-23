@@ -2,13 +2,13 @@ import {
   addItemToCart,
   removeItemFromCart,
   clearItemFromCart,
-} from '../../store/cart/cart.action';
+} from "../../store/cart/cart.action";
 
-import './checkout-item.style.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCartItems } from '../../store/cart/cart.selector';
-import { CartItem } from '../../store/cart/cart.types';
-import { FC, memo } from 'react';
+import "./checkout-item.style.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCartItems } from "../../store/cart/cart.selector";
+import { CartItem } from "../../store/cart/cart.types";
+import { FC, memo } from "react";
 
 type CheckoutItemProps = {
   cartItem: CartItem;
